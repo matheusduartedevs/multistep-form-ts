@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
 import { FormActions, useForm } from '../contexts/FormContext'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Theme from '../../components/Theme'
 import * as C from './styles'
 import SelectOption from '../../components/SelectOption'
@@ -23,7 +24,7 @@ const FormStep2 = () => {
 
   const handleNextStep = () => {
     if (state.name !== '') {
-      navigate('/step2')
+      navigate('/step3')
     } else {
       alert('Preencha os dados!')
     }
@@ -56,10 +57,11 @@ const FormStep2 = () => {
           title="Sou programador"
           description="Já programo há 2 anos ou mais"
           icon="😎"
-          selected={state.level === 0}
+          selected={state.level === 1}
           onClick={() => setLevel(1)}
         />
 
+        <Link to='/' className='backButton'>Voltar</Link>
         <button onClick={handleNextStep}>Próximo</button>
       </C.Container>
     </Theme>
